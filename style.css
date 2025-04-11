@@ -135,15 +135,15 @@ body {
 }
 
 .btn-codex {
-    background-color: #4285F4;
+    background-color: #FF0000;
     color: white;
-    border-color: #4285F4;
+    border-color: #FF0000;
 }
 
 .btn-delta {
-    background-color: #34A853;
+    background-color: #000000;
     color: white;
-    border-color: #34A853;
+    border-color: #000000;
 }
 
 .btn:hover {
