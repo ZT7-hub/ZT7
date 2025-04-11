@@ -5,48 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZT7 - Made by Leon</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+    </style>
 </head>
 <body>
     <!-- القائمة الجانبية -->
-    <input type="checkbox" id="menu-toggle" hidden>
+    <input type="checkbox" id="menu-toggle" class="hidden-toggle">
     <label for="menu-toggle" class="menu-icon">☰</label>
     
     <nav class="sidebar">
         <ul>
-            <li><a href="index.html">Hacks</a></li>
+            <li><a href="#home">Hacks</a></li>
             <li><a href="#scripts">Scripts</a></li>
             <li><a href="#isign">I.sign</a></li>
             <li class="soon">SOON</li>
         </ul>
     </nav>
 
-    <!-- الصفحة الرئيسية -->
-    <main id="Hacks" class="page">
+    <!-- الصفحة الرئيسية (Hacks) -->
+    <main id="home" class="page active">
         <header>
             <h1>ZT7</h1>
             <p>Made by: Leon</p>
         </header>
         
-        <div class="buttons">
-            <a href="itms-services://?action=download-manifest&url=https://codex-ios.com/Install.plist" class="btn">Codex</a>
-            <a href="itms-services://?action=download-manifest&url=https://deltaios-executor.com/Install1.plist" class="btn">Delta</a>
+        <div class="button-container">
+            <a href="itms-services://?action=download-manifest&url=https://codex-ios.com/Install.plist" 
+               class="btn btn-codex" 
+               target="_blank">Codex</a>
+            <a href="itms-services://?action=download-manifest&url=https://deltaios-executor.com/Install1.plist" 
+               class="btn btn-delta" 
+               target="_blank">Delta</a>
         </div>
     </main>
 
     <!-- صفحة Scripts -->
     <div id="scripts" class="page">
         <h2>Scripts</h2>
-        <div class="script-item">
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-            <span class="text-to-copy">قصى</span>
-        </div>
-        <div class="script-item">
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-            <span class="text-to-copy">قصى</span>
-        </div>
-        <div class="script-item">
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-            <span class="text-to-copy">قصى</span>
+        <div class="script-container">
+            <div class="script-item">
+                <button class="copy-btn">Copy</button>
+                <span class="text-to-copy">قصى</span>
+            </div>
+            <div class="script-item">
+                <button class="copy-btn">Copy</button>
+                <span class="text-to-copy">قصى</span>
+            </div>
+            <div class="script-item">
+                <button class="copy-btn">Copy</button>
+                <span class="text-to-copy">قصى</span>
+            </div>
         </div>
     </div>
 
@@ -57,21 +66,38 @@
     </div>
 
     <script>
-    function copyText(button) {
-        const textToCopy = button.nextElementSibling.textContent;
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            button.textContent = "تم النسخ!";
-            setTimeout(() => {
-                button.textContent = "Copy";
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-            button.textContent = "خطأ!";
-            setTimeout(() => {
-                button.textContent = "Copy";
-            }, 2000);
+    // وظيفة النسخ
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const text = this.nextElementSibling.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = this.textContent;
+                this.textContent = 'تم النسخ!';
+                this.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.backgroundColor = '#24292e';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                this.textContent = 'خطأ في النسخ';
+                this.style.backgroundColor = '#f44336';
+            });
         });
-    }
+    });
+
+    // تبديل الصفحات
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
     </script>
 </body>
 </html>
