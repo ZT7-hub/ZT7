@@ -1,0 +1,162 @@
+/* التنسيقات العامة */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* القائمة الجانبية */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #24292e;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+#menu-toggle:checked ~ .sidebar {
+    right: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar .soon {
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* الصفحات */
+.page {
+    display: none;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+#home {
+    display: block;
+    text-align: center;
+    padding-top: 80px;
+}
+
+/* الصفحة الرئيسية */
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    margin-top: 40px;
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #24292e;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+/* صفحة Scripts */
+#scripts {
+    background-color: white;
+}
+
+.script-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    gap: 10px;
+}
+
+.copy-btn {
+    background-color: #24292e;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #2c3e50;
+}
+
+.text-to-copy {
+    background-color: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* صفحة I.sign */
+#isign {
+    background-color: #FFA500;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.error-code {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+}
+
+.soon-text {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+/* إظهار الصفحة المطلوبة */
+#menu-toggle:checked ~ #home,
+#scripts:target,
+#isign:target {
+    display: block;
+}
+
+#menu-toggle:checked ~ #scripts,
+#menu-toggle:checked ~ #isign,
+#home:target ~ #scripts,
+#home:target ~ #isign {
+    display: none;
+}
