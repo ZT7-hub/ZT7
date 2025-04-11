@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZT7 - Made by Leon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- القائمة الجانبية -->
+    <input type="checkbox" id="menu-toggle" hidden>
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    
+    <nav class="sidebar">
+        <ul>
+            <li><a href="index.html">Hacks</a></li>
+            <li><a href="#scripts">Scripts</a></li>
+            <li><a href="#isign">I.sign</a></li>
+            <li class="soon">SOON</li>
+        </ul>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <main id="Hacks" class="page">
+        <header>
+            <h1>ZT7</h1>
+            <p>Made by: Leon</p>
+        </header>
+        
+        <div class="buttons">
+            <a href="itms-services://?action=download-manifest&url=https://codex-ios.com/Install.plist" class="btn">Codex</a>
+            <a href="itms-services://?action=download-manifest&url=https://deltaios-executor.com/Install1.plist" class="btn">Delta</a>
+        </div>
+    </main>
+
+    <!-- صفحة Scripts -->
+    <div id="scripts" class="page">
+        <h2>Scripts</h2>
+        <div class="script-item">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <span class="text-to-copy">قصى</span>
+        </div>
+        <div class="script-item">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <span class="text-to-copy">قصى</span>
+        </div>
+        <div class="script-item">
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            <span class="text-to-copy">قصى</span>
+        </div>
+    </div>
+
+    <!-- صفحة I.sign -->
+    <div id="isign" class="page">
+        <div class="error-code">404</div>
+        <div class="soon-text">Soon</div>
+    </div>
+
+    <script>
+    function copyText(button) {
+        const textToCopy = button.nextElementSibling.textContent;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            button.textContent = "تم النسخ!";
+            setTimeout(() => {
+                button.textContent = "Copy";
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            button.textContent = "خطأ!";
+            setTimeout(() => {
+                button.textContent = "Copy";
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>
